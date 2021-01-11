@@ -24,13 +24,14 @@ def ping(host):
 
     return subprocess.call(command) == 0
 
+#Continue ping until we see 3 failures.
 while(True):
     if(not ping(host)):
       failure = failure + 1
     if(failure > 2):
       break
 
-print('exited loop, execute switch command')
+print('\n#####\n Ping Failed, execute switch commands\n#####\n')
 
 device = {
     "device_type": "cisco_xe",
@@ -40,7 +41,7 @@ device = {
 }
 
 connect = Netmiko(**device)
-output = connect.send_command("show ver")
+"""Enter switch commands here"""
+print(connect.send_command("show ver"))
+print(connect.send_command("show mod"))
 connect.disconnect
-
-print(output)
