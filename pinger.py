@@ -4,7 +4,7 @@ from netmiko import Netmiko
 from getpass import getpass
 
 host=input("enter target ping IP: ")
-count=input("enter ping failure count: ")
+#count=input("enter ping failure count: ")
 switch=input("enter switch IP: ")
 username=input("enter username: ")
 #password=input("enter password: ")
@@ -29,7 +29,7 @@ def ping(host):
 while(True):
     if(not ping(host)):
       failure = failure + 1
-    if(failure > count):
+    if(failure > 5):
       break
 
 print('\n#####\n Ping Failed, execute switch commands\n#####\n')
