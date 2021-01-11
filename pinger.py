@@ -38,10 +38,12 @@ device = {
     "ip": switch,
     "username": username,
     "password": password,
+    "secret": password,
 }
 
 connect = Netmiko(**device)
 """Enter switch commands here"""
-print(connect.send_command("show ver"))
 print(connect.send_command("show mod"))
+connect.enable()
+print(connect.send_command("event manager run adj_fail"))
 connect.disconnect
